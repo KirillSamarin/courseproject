@@ -40,7 +40,9 @@ def main():
     return json_answer
 
 
-def cards_information(path):
+def cards_information(path: str):
+    """принимает на вход путь к файлу xlsx с транзакциями, после чего возвращает информацию о картах в нем
+    в виде json"""
     today_date = datetime.datetime.now().date()
 
     start_date = today_date.replace(day=1)
@@ -68,7 +70,9 @@ def cards_information(path):
     return result
 
 
-def top_five_transactions(path):
+def top_five_transactions(path: str):
+    """принимает на вход путь к файлу xlsx с транзакциями, после чего возвращает 5 самых больших транзакций за месяц
+    в виде json"""
     today_date = datetime.datetime.now().date()
 
     start_date = today_date.replace(day=1)
@@ -95,6 +99,7 @@ def top_five_transactions(path):
 
 
 def currency_get():
+    """функция возвращает курс валют: доллар в рублях, евро в рублях"""
     url = "https://www.cbr-xml-daily.ru/daily_json.js"
     response = requests.get(url).json()
 

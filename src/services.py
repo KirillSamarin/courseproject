@@ -3,6 +3,7 @@ import json
 
 
 def search_by_word(transactions: pd.DataFrame, search: str) -> json:
+    """функция для поиска транзакция по слову, принимает dataframe и слово для поиска, вовзвращает в виде json"""
     search = search.lower()
 
     mask = (
