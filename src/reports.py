@@ -20,7 +20,7 @@ def spending_by_category(
         category: str,
         date: Optional[str] = None
 ) -> str:
-    """принимает на вход dataframe с транзакциями, возвращает его в виде json, отфильтрованным по категории"""
+    """Принимает на вход dataframe с транзакциями, возвращает его в виде json, отфильтрованным по категории"""
     df = transactions.copy()
 
     df = df[df['Категория'].str.lower() == category.lower()].copy()

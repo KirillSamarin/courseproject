@@ -11,9 +11,11 @@ API_KEY = os.getenv("API_KEY")
 
 symbols = ["AAPL", "AMZN", "GOOGL", "MSFT", "TSLA", "^GSPC"]
 
+date = datetime.datetime.now().strftime("%y-%m-%d %H:%M:%S")
 
-def main():
-    current_time = datetime.datetime.now().time()
+
+def main(date):
+    current_time = date
     hour = current_time.hour
     json_answer = {}
 
@@ -41,7 +43,7 @@ def main():
 
 
 def cards_information(path: str):
-    """принимает на вход путь к файлу xlsx с транзакциями, после чего возвращает информацию о картах в нем
+    """Принимает на вход путь к файлу xlsx с транзакциями, после чего возвращает информацию о картах в нем
     в виде json"""
     today_date = datetime.datetime.now().date()
 
@@ -71,7 +73,7 @@ def cards_information(path: str):
 
 
 def top_five_transactions(path: str):
-    """принимает на вход путь к файлу xlsx с транзакциями, после чего возвращает 5 самых больших транзакций за месяц
+    """Принимает на вход путь к файлу xlsx с транзакциями, после чего возвращает 5 самых больших транзакций за месяц
     в виде json"""
     today_date = datetime.datetime.now().date()
 
@@ -99,7 +101,7 @@ def top_five_transactions(path: str):
 
 
 def currency_get():
-    """функция возвращает курс валют: доллар в рублях, евро в рублях"""
+    """Функция возвращает курс валют: доллар в рублях, евро в рублях"""
     url = "https://www.cbr-xml-daily.ru/daily_json.js"
     response = requests.get(url).json()
 
@@ -118,3 +120,5 @@ def get_stock_price(symbol):
             "price": float(response["Global Quote"]["05. price"])
         }
     return None
+
+print(main(date))
