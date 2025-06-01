@@ -51,7 +51,7 @@ def test_main_greeting(mock_datetime, mock_stock, mock_currency, mock_top, mock_
     mock_currency.return_value = [{"currency": "USD", "rate": 90.0}]
     mock_stock.return_value = {"stock": "AAPL", "price": 150.0}
 
-    result = main()
+    result = main(mock_time)
 
     assert result['greeting'] == "Доброе утро!"
     assert len(result['cards']) == 1
@@ -60,5 +60,5 @@ def test_main_greeting(mock_datetime, mock_stock, mock_currency, mock_top, mock_
     assert "stock_prices" in result
 
     mock_time.hour = 20
-    result = main()
+    result = main(mock_time)
     assert result['greeting'] == "Добрый вечер!"
